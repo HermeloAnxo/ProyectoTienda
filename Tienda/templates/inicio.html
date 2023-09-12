@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Contenido principal -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <div class="jumbotron bg-success text-white">
+                    <h1 class="display-4">¡Bienvenido a MeVendo.com!</h1>
+                    <p class="lead">El lugar donde vendo mis cosas o partes de mi que me sobran o no quiero.</p>
+                    <!-- Imagen principal (ajusta la ruta de la imagen) -->
+                    <div class="bg-success">
+                        <img src="{% static 'images/inicio.jpg' %}" alt="Imagen de bienvenida" class="img-fluid rounded" style="padding-bottom: 10%; padding-left: 10%; padding-right: 10%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    {% endblock %}

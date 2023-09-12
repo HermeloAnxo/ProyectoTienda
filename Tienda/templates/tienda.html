@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+<body>
+    {% block content %}
+    <div class="container-fluid tienda">
+        <div class="row">
+            <div class="col-12 align-self-center text-success">
+                <h1>Productos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="row" style="padding: 5px 5px;">
+                    <div class="col-12">
+                        <div class="row">
+                            {% for p in productos %}
+                            <div class="col-6">
+                                <div class="card bg-success text-white" style="height: 25rem; width: 20rem; margin: 5px;">
+                                    <div class="card-body">
+                                        <img src="{% static 'images/' %}{{p.imagen}}" class="w3-round" style="width:90%" alt="">
+                                        <h5 class="card-title">{{p.nombre}}</h5>
+                                        <p class="card-text">{{p.precio}}€</p>
+                                        <p class="card-text">{{p.descripcion}}</p>
+                                        <div class="add-button">
+                                            <a href="agregar/{{p.id}}" class="btn btn-dark">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12 align-self-center text-success">
+                        <h1>Carrito</h1>
+                    </div>
+                    {% include "carrito.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock content %}
+</body>
+
+</html>

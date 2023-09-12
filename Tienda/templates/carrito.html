@@ -1,0 +1,44 @@
+<aside class="cart bg-success rounded">
+    <div class="cart-body p-4">
+        {% if request.session.carrito.items %}
+        <div class="bg-success cart-bg rounded p-3">
+            <div class="cart-header row">
+                <div class="col text-white">Producto</div>
+                <div class="col text-white">Precio</div>
+                <div class="col text-white">Cantidad</div>
+                <div class="col text-white">Subtotal</div>
+                <div class="col"></div>
+            </div>
+            {% for key,value in request.session.carrito.items %}
+            <article class="product-item">
+                <div class="product-description row">
+                    <div class="col">
+                        <span class="product-title text-white">{{value.nombre}}</span>
+                    </div>
+                    <div class="col text-white">
+                        <div class="price">{{value.precio}}€</div>
+                    </div>
+                    <div class="col text-white">
+                        <div class="qty">{{value.cantidad}}</div>
+                    </div>
+                    <div class="col text-white">
+                        <div>{{value.subtotal}} €</div>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'Agregar' key %}" class="btn badge btn-dark">+</a>
+                        <a href="{% url 'Sacar' key %}" class="btn badge btn-dark">-</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+            <p><a class="clear text-white" href="{% url 'Limpiar'%}" class="">Limpiar</a></p>
+            <div id="total" class="total text-white">Total a pagar: {{total_carrito}} €</div>
+            <a href="#" class="btn btn-success btn-block mt-3 rounded">Realizar pedido</a>
+        </div>
+        {% else %}
+        <div class="no-products bg-success rounded p-3">
+            <p class="text-white">No hay Productos Seleccionados</p>
+        </div>
+        {% endif %}
+    </div>
+</aside>
